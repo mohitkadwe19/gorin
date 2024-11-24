@@ -124,8 +124,8 @@ const styles = StyleSheet.create({
   },
   subHeaderText: {
     fontFamily: "Poppins",
-    fontWeight: "600",
-    fontSize: 18,
+    fontWeight: "500",
+    fontSize: 16,
     color: "#333333",
     marginBottom: 4,
     textAlign: "left",

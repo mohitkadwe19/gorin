@@ -234,10 +234,11 @@ const styles = StyleSheet.create({
     bottom: 115,
     zIndex: 2,
     alignItems: "center",
+    backgroundColor: "transparent",
   },
   progressContainer: {
     width: "75%",
-    backgroundColor: "#EBF0F1",
+    backgroundColor: "grey",
     height: 8,
     borderRadius: 5,
     marginBottom: 4,

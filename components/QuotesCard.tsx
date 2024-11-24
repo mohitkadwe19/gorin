@@ -1,7 +1,8 @@
-import { StyleSheet, Image, Dimensions } from "react-native";
+import { StyleSheet, Image, Dimensions, ImageBackground } from "react-native";
 
 import { ThemedView } from "./ThemedView";
 import { ThemedText } from "./ThemedText";
+import React from "react";
 
 export function QuotesCard() {
   const width = Dimensions.get("window").width;
@@ -9,17 +10,23 @@ export function QuotesCard() {
   return (
     <ThemedView style={styles.container}>
       <ThemedView style={styles.card}>
-        <Image
-          source={require("@/assets/images/icons/quotes.png")}
-          style={styles.icon}
-        />
-        <ThemedText style={styles.cardText}>
-          In that era, there will be neither famine or war, envy or competition,
-          for good will flow in abundance and all the delightswill be freely
-          available as dust. The occupation of the entire world will be solerly
-          to know G-d.
-        </ThemedText>
-        <ThemedText style={styles.cardBottomText}>- Mishneh Tarah</ThemedText>
+        <ImageBackground
+          source={require("@/assets/images/icons/quotesContainer.png")}
+          style={styles.quotesImageContainer}
+          resizeMode="contain"
+        >
+          <Image
+            source={require("@/assets/images/icons/quotes.png")}
+            style={styles.icon}
+          />
+          <ThemedText style={styles.cardText}>
+            In that era, there will be neither famine or war, envy or
+            competition, for good will flow in abundance and all the
+            delightswill be freely available as dust. The occupation of the
+            entire world will be solerly to know G-d.
+          </ThemedText>
+          <ThemedText style={styles.cardBottomText}>- Mishneh Tarah</ThemedText>
+        </ImageBackground>
       </ThemedView>
     </ThemedView>
   );
@@ -55,5 +62,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 55,
     color: "#000000",
+  },
+  quotesImageContainer: {
+    width: "100%",
+    height: "auto",
   },
 });
