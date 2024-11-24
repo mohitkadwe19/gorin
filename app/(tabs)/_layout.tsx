@@ -1,12 +1,11 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import { Tabs } from "expo-router";
+import React from "react";
+import { Platform, StyleSheet, Image } from "react-native";
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { HapticTab } from "@/components/HapticTab";
+import TabBarBackground from "@/components/ui/TabBarBackground";
+import { Colors } from "@/constants/Colors";
+import { useColorScheme } from "@/hooks/useColorScheme";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -21,25 +20,72 @@ export default function TabLayout() {
         tabBarStyle: Platform.select({
           ios: {
             // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
+            position: "absolute",
           },
-          default: {},
+          default: {
+            backgroundColor: "white",
+            borderTopWidth: 1,
+            borderTopColor: "#eee",
+          },
         }),
-      }}>
+        tabBarInactiveTintColor: "#999",
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: "Home",
+          tabBarIcon: ({ color }) => (
+            <Image
+              source={require("@/assets/images/logo/logo.png")}
+              style={styles.tabIcon}
+            />
+          ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="closses"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: "Closses",
+          tabBarIcon: ({ color }) => (
+            <Image
+              source={require("@/assets/images/icons/book.png")}
+              style={styles.tabIcon}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="giving"
+        options={{
+          title: "Giving",
+          tabBarIcon: ({ color }) => (
+            <Image
+              source={require("@/assets/images/icons/group.png")}
+              style={styles.tabIcon}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: "Profile",
+          tabBarIcon: ({ color }) => (
+            <Image
+              source={require("@/assets/images/icons/profile.png")}
+              style={styles.tabIcon}
+            />
+          ),
         }}
       />
     </Tabs>
   );
 }
+
+const styles = StyleSheet.create({
+  tabIcon: {
+    width: 24,
+    height: 24,
+  },
+});
